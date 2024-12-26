@@ -1,0 +1,78 @@
+.container {
+  max-width: 1170px;
+  min-width: 1170px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  background-color: #fff;
+  padding: 35px 0;
+  align-items: center;
+  max-height: 52px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.headerLogo {
+  max-width: 130px;
+  max-height: 22px;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 60px;
+  margin-right: auto;
+  font-family: "Ubuntu", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.navLinks a {
+  margin-right: 40px;
+  padding: 2px 0;
+  font-family: "Ubuntu", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.contactsHeader {
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  margin-right: 36px;
+  font-family: "Ubuntu", serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.contactsHeader a {
+  color: #212121;
+  padding: 2px 0;
+  font-family: "Ubuntu", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+}
+
+address {
+  display: flex;
+}
+
+.callUsBg {
+  background-image: url("../../assets/callus-icon.svg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 40px 40px;
+}
+
+.talkToUsBg {
+  background-image: url("../../assets/talktous-icon.svg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 40px 40px;
+}

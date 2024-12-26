@@ -1,0 +1,192 @@
+/* For all page */
+.container {
+  max-width: 1170px;
+  min-width: 1170px;
+  margin: 0 auto;
+  padding: 0;
+  justify-items: center;
+  align-content: center;
+}
+
+.buttons {
+  width: 272px;
+  height: 52px;
+  max-width: 272px;
+  max-height: 52px;
+  margin-left: auto;
+}
+
+.sectionOffset {
+  margin-top: 120px;
+}
+
+.flex {
+  display: flex;
+}
+
+/* hero */
+/* Slider section */
+.constructionSection {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 300px;
+}
+
+.heroTitle {
+  margin-bottom: 24px;
+  color: #fff;
+  font-size: 72px;
+}
+
+.heroP {
+  margin-bottom: 61px;
+}
+
+.heroAll {
+  display: flex;
+  padding: 120px 0;
+  background-position: "center";
+  /* font: 900 60px "Roboto", sans-serif; */
+  color: #fff;
+  background-origin: content-box;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  margin-left: 265px;
+  max-width: 50%;
+}
+
+.heroContentButtons {
+  display: flex;
+  align-items: center;
+  max-width: 526px;
+  /* justify-content: space-around; */
+  /* justify-items: space-between; */
+  gap: 24px;
+}
+
+.heroArrows {
+  /* display: block; */
+  background-color: rgba(68, 65, 65, 0.569);
+  height: 40px;
+  width: 40px;
+  border: 1px solid rgb(188, 183, 183);
+  border-radius: 100%;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.heroArrows:hover {
+  background-color: #fff;
+}
+
+.heroChangeSlider {
+  display: flex;
+  /* flex-direction: row; */
+}
+
+.heroChanges {
+  border-bottom: 1px solid rgb(8, 8, 8); /* Параметры линии */
+}
+
+/* Createx */
+.createxContent {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-content: center;
+}
+
+.createxText {
+  margin-bottom: 60px;
+}
+
+/* Core values */
+
+.valuesList {
+  display: flex;
+}
+
+.valuesItem {
+  border: 1px solid #ff5a30;
+  border-color: #ff5a30;
+}
+
+/* Services */
+
+.viewServices {
+  display: flex;
+  /* text-align: center; */
+}
+
+/* Projects */
+
+.projectsTitle {
+  max-width: 55%;
+  margin-right: auto;
+}
+
+.projectButtons {
+  position: relative;
+  align-items: center;
+}
+
+.projectArrows {
+  /* display: block; */
+  background-color: #fff;
+  height: 40px;
+  width: 40px;
+  /* border: 1px solid rgb(188, 183, 183); */
+  border-radius: 100%;
+  border: 0px;
+  /* align-items: center; */
+  /* position: absolute; */
+  transition: background-color 0.3s ease-in-out;
+}
+
+.projectArrows:hover {
+  background-color: #ff5a30;
+}
+
+.contentt {
+  background-color: #38d9a9;
+  /* height: 200px; */
+  position: relative;
+}
+
+.test:hover {
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(100%);
+}
+
+.listWrapper {
+  flex-wrap: wrap;
+  /* gap:calc() */
+  justify-content: space-between;
+}
+
+.discussBg {
+  background-image: url("../../assets/bg-image2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Discuss form  */
+
+.formDiscuss {
+  background-color: #fff;
+  padding: 40px;
+}
+
+.formItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.formText {
+  max-width: 60%;
+}

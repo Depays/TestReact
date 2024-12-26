@@ -1,0 +1,16 @@
+.container {
+  max-width: 1170px;
+  min-width: 1170px;
+  margin: 0 auto;
+  padding: 0;
+  flex-direction: column;
+}
+
+.footerBg {
+  background-color: #212121;
+}
+
+.flex {
+  display: flex;
+  /* flex-direction: column; */
+}
