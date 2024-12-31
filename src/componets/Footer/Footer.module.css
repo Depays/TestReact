@@ -4,13 +4,138 @@
   margin: 0 auto;
   padding: 0;
   flex-direction: column;
+  /* margin-top: 80px; */
+  padding: 80px 0px;
 }
 
 .footerBg {
-  background-color: #212121;
+  background-color: #1e212c;
+}
+
+.footerLogos {
+  width: 50%;
+  margin-bottom: 49px;
+}
+
+.footerLogos p {
+  width: 80%;
+  font-family: "Ubuntu";
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 400;
+  color: #787a80;
 }
 
 .flex {
   display: flex;
-  /* flex-direction: column; */
+}
+
+.logos {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.logos img {
+  margin-right: 60px;
+}
+.logos svg {
+  fill: #fff;
+}
+
+.companyLogos {
+  display: flex;
+  gap: 16px;
+}
+
+.contactsPart {
+  display: flex;
+  gap: 124px;
+  margin-bottom: 60px;
+}
+
+.description {
+  color: #fff;
+}
+
+.description h3 {
+  font-family: "Ubuntu";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 1px;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 13px;
+}
+
+.headOfficeDescr {
+  font-family: "Ubuntu";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26.6px;
+  color: #787a80;
+}
+
+/* Subscribe */
+
+.subscribeTitle {
+  font-family: "Ubuntu";
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.emailSubscribe {
+  padding: 0px 16px;
+  max-height: 44px;
+  width: 364px;
+  height: 44px;
+  max-width: 364px;
+  font-family: "Ubuntu";
+  font-size: 14px;
+  font-weight: 400;
+  color: #9a9ca5;
+  line-height: 21px;
+  border: 1px solid #61636b;
+  border-radius: 4px 0px 0px 4px;
+  background: #393c46 !important;
+}
+
+.subscribeButton {
+  background-color: #ff5a30;
+  color: white;
+  border: 0px solid white;
+  font-family: "Ubuntu";
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  /* padding: 18px 40px; */
+  border-radius: 0px 4px 4px 0px;
+  text-align: center;
+
+  max-height: 44px;
+}
+
+.subscribeButton:hover {
+  background-color: #fc3300;
+  transition: background-color 0.3ms ease-in-out;
+}
+
+.descr {
+  margin-top: 16px;
+  font-family: "Ubuntu";
+  font-size: 12px;
+  font-weight: 400;
+  color: #787a80;
+  line-height: 18px;
+}
+
+.allRights {
+  font-family: "Ubuntu";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #fff;
 }

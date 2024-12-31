@@ -1,7 +1,51 @@
 .button {
   background-color: #ff5a30;
   color: white;
-  border: 1px solid white;
+  border: 0px solid white;
+  font-family: "Ubuntu";
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 18px 40px;
+  border-radius: 4px;
   /* width: inherit;
   height: inherit; */
 }
+
+.button:hover {
+  background-color: #fc3300;
+  transition: background-color 0.3ms ease-in-out;
+}
+
+.buttonTransparent {
+  color: white;
+  border: 1px solid white;
+  font-family: "Ubuntu";
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 18px 40px;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.buttonTransparent:active {
+  background-color: #fff;
+  color: black;
+}
+
+.buttonWhiteBg {
+  background-color: #fff;
+  border: 1px solid #ff5a30;
+  font-family: "Ubuntu";
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 10px 32px;
+  /* max-width: 108px; */
+  border-radius: 4px;
+}
+
+/* .button:active {
+  background-color: #000;
+} */

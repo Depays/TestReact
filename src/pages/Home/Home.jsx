@@ -1,63 +1,32 @@
-import { useEffect, useState, useCallback } from "react";
+import { useRef, useState } from "react";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import { ReactSVG } from "react-svg";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import styles from "./Home.module.css";
 import images from "../../images.js";
 import Button from "../../componets/Button/Button.jsx";
 import SectionTitle from "../../componets/SectionsTitle/SectionTitle.jsx";
 import SectionText from "../../componets/SectionText/SectionText.jsx";
+import ProjectItem from "../../componets/ProjectItem/ProjectItem.jsx";
+import SampleNextArrow from "../../componets/SliderButtom.jsx";
 import v from "../../assets/createx.mp4";
 import icons from "../../icons.js";
 
 const Home = () => {
-  const [photo, setPhoto] = useState(1);
-  const [arrow, setArrows] = useState({
-    isLeftArrowAvailable: true,
-    isRightArrowAvailable: false,
-  });
-  const [discuss, setAgree] = useState(false);
-  console.log(arrow.isLeftArrowAvailable);
+  const [index, setActiveStep] = useState(0);
+  const [agree, setAgree] = useState(false);
+  const slider = useRef(null);
+  const BgCollection = [
+    images.bghomefirst,
+    images.bgsecond,
+    images.bgthird,
+    images.bgseforth,
+  ];
+  const CollectionSize = BgCollection.length;
 
-  const handleChangePhoto = (direction) => {
-    console.log(direction);
-    console.log(photo);
-    if (photo == 1 && direction == -1) {
-      setArrows((arrow) => ({ ...arrow, isLeftArrowAvailable: true }));
-      return;
-    }
-    if (photo == 2) {
-      setArrows((arrow) => ({ ...arrow, isLeftArrowAvailable: false }));
-    }
-    if (photo == 4 && direction == 1) {
-      setArrows((arrow) => ({ ...arrow, isRightArrowAvailable: true }));
-      return;
-    }
-    if (photo == 3) {
-      setArrows((arrow) => ({ ...arrow, isRightArrowAvailable: false }));
-    }
-    if (direction === 1) {
-      setPhoto((prev) => prev + 1);
-    } else {
-      setPhoto((prev) => prev - 1);
-    }
-  };
-
-  const returnPhotoURL = () => {
-    switch (photo) {
-      case 1:
-        return images.bghomefirst;
-      case 2:
-        return images.bgsecond;
-      case 3:
-        return images.bgthird;
-      case 4:
-        return images.bgseforth;
-      default:
-        null;
-    }
-  };
-
-  //   useEffect(() => {}, [photo]);
   const coreValues = {
     values: [
       {
@@ -77,45 +46,119 @@ const Home = () => {
       },
     ],
     services: [
-      { title: "Construction", icon: icons.servicesConstruction },
-      { title: "Project Development", icon: icons.servicesPlan },
-      { title: "Construction", icon: icons.servicesPantone },
-      { title: "Repairs", icon: icons.servicesPainting },
+      {
+        title: "Construction",
+        icon: icons.servicesConstruction,
+        bg: images.servicesItem1,
+      },
+      {
+        title: "Project Development",
+        icon: icons.servicesPainting,
+        bg: images.servicesItem2,
+      },
+      {
+        title: "Construct",
+        icon: icons.servicesPantone,
+        bg: images.servicesItem3,
+      },
+      {
+        title: "Repairs",
+        icon: icons.servicesPlan,
+        bg: images.servicesItem4,
+      },
+    ],
+    projects: [
+      {
+        photo: images.projectItem1,
+        title: "Red Finger Building",
+        type: "Business Centers",
+        link: "",
+      },
+      {
+        photo: images.projectItem2,
+        title: "Cubes Building",
+        type: "Business Centers",
+        link: "",
+      },
+      {
+        photo: images.projectItem3,
+        title: "The Pencil Building",
+        type: "Stores & Malls",
+        link: "",
+      },
+      {
+        photo: images.projectItem3,
+        title: "The Pencil Building",
+        type: "Stores & Malls",
+        link: "",
+      },
+      {
+        photo: images.projectItem2,
+        title: "Cubes Building",
+        type: "Business Centers",
+        link: "",
+      },
+      {
+        photo: images.projectItem1,
+        title: "Red Finger Building",
+        type: "Business Centers",
+        link: "",
+      },
     ],
     partners: [
-      icons.servicesPainting,
-      icons.servicesPainting,
-      icons.servicesPainting,
+      icons.iconPartner1,
+      icons.iconPartner2,
+      icons.iconPartner3,
       icons.servicesPainting,
       icons.servicesPainting,
       icons.servicesPainting,
     ],
   };
 
+  var settings = {
+    infinite: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    speed: 500,
+    // nextArrow: document.querySelector("#_projectArrows_1stcg_527"),
+    // prevArrow: document.querySelector("#_projectArrows_1stcg_527"),
+  };
+
+  const handleButtonAccept = () => {
+    setAgree((prevState) => (prevState = !prevState));
+    console.log("Click");
+  };
+
+  const goToNextPicture = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const goToPrevPicture = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
   return (
     <>
       <section
         style={{
-          backgroundImage: `url(${returnPhotoURL()})`,
+          backgroundImage: `url(${BgCollection[index]})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          maxWidth: "2000px",
-          maxHeight: "900px",
+          maxWidth: "1920px",
+          maxHeight: "988px",
           width: "1920px",
-          height: "508px",
-          //   alignContent: "center",
+          height: "988px",
           margin: "0 auto",
-          padding: 0,
         }}
-        // className={`${styles.container}`}
+        className={styles.sectionBg}
       >
         <div className={`${styles.container} ${styles.heroAll}`}>
           <button
             style={{ marginLeft: "32px" }}
             className={styles.heroArrows}
-            disabled={arrow.isLeftArrowAvailable}
-            onClick={() => handleChangePhoto(-1)}
+            disabled={index === 0}
+            onClick={() => goToPrevPicture()}
           >
             <FaArrowLeftLong />
           </button>
@@ -129,7 +172,9 @@ const Home = () => {
               turpis purus eget pellentesque integer ipsum elementum felis.
             </p>
             <div className={styles.heroContentButtons}>
-              <Button className={styles.buttons}>Learn more about us</Button>
+              <Button transparent={true} className={styles.buttons}>
+                Learn more about us
+              </Button>
               <Button className={styles.buttons}>SUBMIT REQUEST</Button>
             </div>
             <ul className={styles.heroChangeSlider}>
@@ -143,8 +188,8 @@ const Home = () => {
           <button
             style={{ marginRight: "32px" }}
             className={styles.heroArrows}
-            disabled={arrow.isRightArrowAvailable}
-            onClick={() => handleChangePhoto(1)}
+            disabled={index === CollectionSize - 1}
+            onClick={() => goToNextPicture()}
           >
             <FaArrowRightLong />
           </button>
@@ -185,7 +230,10 @@ const Home = () => {
           <div>
             <ul className={styles.valuesList}>
               {coreValues.values.map((v, index) => (
-                <li className={styles.valuesItem} key={index}>
+                <li
+                  className={`${styles.valuesItem} ${styles.flex}`}
+                  key={index}
+                >
                   <img src={v.icon} alt="ValuesIcon" />
                   <h3>{v.title}</h3>
                   <p>{v.text}</p>
@@ -204,21 +252,23 @@ const Home = () => {
             range of construction services.
           </SectionText>
           <div>
-            <ul className={styles.valuesList}>
+            <ul className={styles.servicesList}>
               {coreValues.services.map((item, index) => (
-                <li key={index}>
-                  <img
-                    className={styles.test}
-                    src={item.icon}
-                    alt="ServicesLogo"
-                  />
+                <li
+                  className={styles.servicesItem}
+                  style={{ backgroundImage: `url(${item.bg})` }}
+                  key={index}
+                >
+                  <ReactSVG className={styles.servicesIcon} src={item.icon} />
                   <h3>{item.title}</h3>
                 </li>
               ))}
             </ul>
           </div>
           <div className={styles.viewServices}>
-            <p>Learn more about our services</p>
+            <p className={styles.buttonParagraph}>
+              Learn more about our services
+            </p>
             <Button>View services</Button>
           </div>
         </div>
@@ -226,17 +276,51 @@ const Home = () => {
 
       <section className={styles.sectionOffset}>
         <div className={styles.container}>
-          <div className={styles.flex}>
-            <SectionTitle className={styles.projectsTitle}>
-              Browse our selected projects and learn more about our work
-            </SectionTitle>
-            <div>
-              <button className={styles.projectArrows}>
-                <FaArrowLeftLong />
-              </button>
-              <button className={styles.projectArrows}>
-                <FaArrowRightLong />
-              </button>
+          <div className={styles.projectsContent}>
+            <div className={styles.projectsHeader}>
+              <SectionTitle className={styles.projectsTitle}>
+                Browse our selected projects
+                and&nbsp;learn&nbsp;more&nbsp;about&nbsp;our&nbsp;work&nbsp;
+              </SectionTitle>
+              <div className={styles.projectArrowList}>
+                <div className={styles.projectArrowsBlock}>
+                  <button
+                    onClick={() => slider?.current?.slickPrev()}
+                    className={styles.projectArrows}
+                  >
+                    <FaArrowLeftLong />
+                  </button>
+                  <button
+                    onClick={() => slider?.current?.slickNext()}
+                    className={styles.projectArrows}
+                  >
+                    <FaArrowRightLong />
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className={styles.flex}>
+              <ul className={styles.projectList}>
+                <Slider
+                  ref={slider}
+                  style={{ maxWidth: "1200px" }}
+                  {...settings}
+                >
+                  {coreValues.projects.map((project, index) => (
+                    <ProjectItem
+                      key={index}
+                      image={project.photo}
+                      title={project.title}
+                      type={project.type}
+                      link={project.link}
+                    ></ProjectItem>
+                  ))}
+                </Slider>
+              </ul>
+            </div>
+            <div className={styles.viewServices}>
+              <p className={styles.buttonParagraph}>Explore all our works</p>{" "}
+              <Button>View portfolio</Button>
             </div>
           </div>
         </div>
@@ -245,7 +329,7 @@ const Home = () => {
       <section className={styles.sectionOffset}>
         <div className={styles.container}>
           <SectionTitle>Supported by 12+ partners</SectionTitle>
-          <ul className={`${styles.valuesList} ${styles.listWrapper}`}>
+          <ul className={`${styles.listWrapper}`}>
             {coreValues.partners.map((partner, index) => (
               <li key={index}>
                 <img src={partner} alt="PatnerLogo" />
@@ -255,43 +339,75 @@ const Home = () => {
         </div>
       </section>
 
-      <section>
+      <section className={styles.sectionOffset}>
         <div className={styles.container}>
-          <SectionTitle>Recent news</SectionTitle>
+          <SectionTitle>Some facts and figures</SectionTitle>
         </div>
       </section>
 
       <section className={`${styles.sectionOffset}`}>
         <div className={styles.container}>
-          <h2>Recent news</h2>
+          <div>
+            <SectionTitle>Recent news</SectionTitle>
+            <div></div>
+            <div>
+              <p>Explore all our news posts</p>
+              <Button>View all news</Button>
+            </div>
+          </div>
         </div>
       </section>
 
       <section className={`${styles.sectionOffset} ${styles.discussBg}`}>
         <div className={styles.container}>
-          <div className={`${styles.formDiscuss} ${styles.formItem}`}>
-            <SectionTitle>A quick way to discuss details</SectionTitle>
+          <div className={`${styles.formDiscuss}`}>
+            <h2>A&nbsp;quick way&nbsp;to&nbsp;discuss&nbsp;details</h2>
             <form action="" method="put">
               <p className={styles.formItem}>
                 <label htmlFor="name">Name*</label>
-                <input type="text" name="name" id="name" />
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Your name"
+                />
               </p>
               <p className={styles.formItem}>
                 <label htmlFor="phone">Phone*</label>
-                <input type="tel" name="phone" id="phone" />
+                <input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  placeholder="Your phone number"
+                />
               </p>
               <p className={styles.formItem}>
                 <label htmlFor="email">Email*</label>
-                <input type="email" name="email" id="email" />
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Your working email"
+                />
               </p>
               <p className={styles.formItem}>
                 <label htmlFor="message">Message*</label>
-                <input type="text" name="message" id="message" />
+                <input
+                  type="text"
+                  name="message"
+                  id="message"
+                  placeholder="Your message"
+                />
               </p>
             </form>
             <div className={`${styles.flex}`}>
               <div>
-                <button>!</button>
+                <button
+                  onClick={handleButtonAccept}
+                  className={agree ? styles.active : styles.acceptButton}
+                >
+                  <ReactSVG src={icons.check} />
+                </button>
               </div>
               <p className={styles.formText}>
                 I agree to receive communications from Createx Construction
